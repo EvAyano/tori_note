@@ -2,32 +2,50 @@ name: CI & Deploy to Heroku
 
 on:
   push:
-    branches:
-      - main
+    branches: ["*"]
 
 jobs:
   build:
+    name: Build on all branches
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
+          ruby-version: 3.2.8
 
       - name: Install dependencies
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
 
-      - name: Set up database
-        run: |
-          bin/rails db:create
-          bin/rails db:migrate
-      
+      #テスト
+      # - name: Run tests
+      #   env:
+      #     RAILS_ENV: test
+      #   run: |
+      #     unset DATABASE_URL
+      #     bundle exec rake db:create
+      #     bundle exec rake db:migrate
+      #     bundle exec rspec
+
+  deploy:
+    name: Deploy only on main
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.8
+
       - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
@@ -38,3 +56,6 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "tori-note-api"
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          branch: main
+          dontuseforce: false
+          
