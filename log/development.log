@@ -8,3 +8,24 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 16ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 10098)
 
 
+Started GET "/" for 127.0.0.1 at 2025-07-20 21:59:03 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ayano/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ayano/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 378)
+Completed 200 OK in 16ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 7773)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-20 21:59:13 +0900
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ayano/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ayano/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.0ms | Allocations: 13)
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 261)
+
+
+Started GET "/hello" for 127.0.0.1 at 2025-07-20 22:03:16 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HelloController#world as */*
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2476)
+
+
