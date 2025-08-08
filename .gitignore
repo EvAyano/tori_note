@@ -11,6 +11,8 @@
 /tmp/
 /config/master.key
 /config/credentials/*.key
+/log/*
+!/log/.keep
 # Used by dotenv library to load environment variables.
 # .env
 
